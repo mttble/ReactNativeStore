@@ -12,36 +12,40 @@ const categories = ['Trending Now', 'All', 'New', 'Mens', 'Womens']
 
 const HomeScreen = () => {
   const [selectedCategory, setSelectedCategory] = useState("Trending Now")
+  const [isLiked, setIsLiked] = useState(false)
   return (
     <LinearGradient colors={['#FDF0F3','#FFFBFC']} style={styles.container}>
         <Header />
-        <Text style={styles.matchText}>Match Your Style</Text>
-        <View style={styles.inputContainer}>
-          <View style={styles.iconContainer}>
-          <Fontisto name="search" size={26} color="#C0C0C0" />
-          </View>
-          <TextInput style={styles.textInput} placeholder='Search'/>
-        </View>
-
-        <FlatList 
-        data={categories} 
-        renderItem={({ item })=>(
-          <Category item={item} 
-          selectedCategory={selectedCategory} 
-          setSelectedCategory={setSelectedCategory}/>)} 
-        keyExtractor={(item) => item} 
-        horizontal={true} 
-        showsHorizontalScrollIndicator={false}/>
-        <View style={{ flexDirection:'row'}}>
-          <ProductCard/>
-          <ProductCard/>
-        </View>
-        <View style={{ flexDirection:'row'}}>
-          <ProductCard/>
-          <ProductCard/>
-        </View>
         
-        {/* <Category/> */}
+        <FlatList numColumns={2} 
+        ListHeaderComponent={
+
+          <>
+            <Text style={styles.matchText}>Match Your Style</Text>
+            <View style={styles.inputContainer}>
+              <View style={styles.iconContainer}>
+                <Fontisto name="search" size={26} color="#C0C0C0" />
+              </View>
+              <TextInput style={styles.textInput} placeholder='Search'/>
+            </View>
+            <FlatList 
+              data={categories} 
+              renderItem={({ item })=>(
+            <Category item={item} 
+              selectedCategory={selectedCategory} 
+              setSelectedCategory={setSelectedCategory}/>)} 
+              keyExtractor={(item) => item} 
+              horizontal={true} 
+              showsHorizontalScrollIndicator={false}/>
+          </>
+
+        }
+        data={[1,2,3,4,5,6]} 
+        renderItem={({item, index}) => <ProductCard item={item} isLiked={isLiked} setIsLiked={setIsLiked} />}
+        showsVerticalScrollIndicator={false} 
+        contentContainerStyle={{paddingBottom:50}}
+        />
+        
     </LinearGradient>
   )
 }
@@ -63,7 +67,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 12,
         height: 48,
-        marginVertical: 10,
+        marginVertical: 15,
+        marginBottom: 20,
     },
     textInput:{
         flex: 1,
