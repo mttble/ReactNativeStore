@@ -6,11 +6,12 @@ import LinearGradient from 'react-native-linear-gradient'
 import Header from './components/Header'
 import Fontisto from 'react-native-vector-icons/Fontisto'
 import Category from './components/Category'
+import ProductCard from './components/ProductCard'
 
 const categories = ['Trending Now', 'All', 'New', 'Mens', 'Womens']
 
 const HomeScreen = () => {
-  const [selectedCategory, setSelectedCategory] = useState(null)
+  const [selectedCategory, setSelectedCategory] = useState("Trending Now")
   return (
     <LinearGradient colors={['#FDF0F3','#FFFBFC']} style={styles.container}>
         <Header />
@@ -31,10 +32,14 @@ const HomeScreen = () => {
         keyExtractor={(item) => item} 
         horizontal={true} 
         showsHorizontalScrollIndicator={false}/>
-        <View>
-          <Text>Products</Text>
+        <View style={{ flexDirection:'row'}}>
+          <ProductCard/>
+          <ProductCard/>
         </View>
-        
+        <View style={{ flexDirection:'row'}}>
+          <ProductCard/>
+          <ProductCard/>
+        </View>
         
         {/* <Category/> */}
     </LinearGradient>
@@ -45,7 +50,6 @@ export default HomeScreen
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         padding: 20,
     },
     matchText:{
@@ -62,6 +66,7 @@ const styles = StyleSheet.create({
         marginVertical: 10,
     },
     textInput:{
+        flex: 1,
         fontSize: 20,
         marginLeft: 10,
         width: '80%',
