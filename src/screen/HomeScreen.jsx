@@ -1,7 +1,5 @@
 import { StyleSheet, Text, View, TextInput, FlatList } from 'react-native'
 import React, {useState} from 'react'
-import Icon from 'react-native-vector-icons/FontAwesome'
-import AntDesign from 'react-native-vector-icons/AntDesign'
 import LinearGradient from 'react-native-linear-gradient'
 import Header from './components/Header'
 import Fontisto from 'react-native-vector-icons/Fontisto'
@@ -15,18 +13,19 @@ const HomeScreen = () => {
   const [isLiked, setIsLiked] = useState(false)
   return (
     <LinearGradient colors={['#FDF0F3','#FFFBFC']} style={styles.container}>
-        <Header />
+        
         
         <FlatList numColumns={2} 
         ListHeaderComponent={
 
           <>
+            <Header />
             <Text style={styles.matchText}>Match Your Style</Text>
             <View style={styles.inputContainer}>
               <View style={styles.iconContainer}>
                 <Fontisto name="search" size={26} color="#C0C0C0" />
               </View>
-              <TextInput style={styles.textInput} placeholder='Search'/>
+              <TextInput style={styles.textInput} placeholder='Search' placeholderTextColor="#C0C0C0"/>
             </View>
             <FlatList 
               data={categories} 
@@ -75,6 +74,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         marginLeft: 10,
         width: '80%',
+        color:'#000000',
     },
     iconContainer:{
         marginLeft: 10,
