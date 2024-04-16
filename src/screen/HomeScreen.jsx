@@ -1,9 +1,9 @@
-import { StyleSheet, Text, View, TextInput, FlatList } from 'react-native'
-import React, {useState} from 'react'
+import React, { useState } from 'react'
+import { FlatList, StyleSheet, Text, TextInput, View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
-import Header from './components/Header'
 import Fontisto from 'react-native-vector-icons/Fontisto'
 import Category from './components/Category'
+import Header from './components/Header'
 import ProductCard from './components/ProductCard'
 
 const categories = ['Trending Now', 'All', 'New', 'Mens', 'Womens']
